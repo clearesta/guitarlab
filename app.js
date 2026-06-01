@@ -821,6 +821,8 @@ const CIRCLE_DISPLAY = [
   {major:'Eb',minor:'Cm',flats:3},{major:'Bb',minor:'Gm',flats:2},{major:'F',minor:'Dm',flats:1}
 ];
 
+let activeCircleKey = null;
+
 function initCircleOfFifths() { drawCircle(); }
 
 function drawCircle() {
@@ -865,13 +867,13 @@ function drawCircle() {
     g.setAttribute('class', 'circle-key'); g.dataset.key = d.major;
     const bg = document.createElementNS(ns, 'circle');
     bg.setAttribute('cx', mx); bg.setAttribute('cy', my); bg.setAttribute('r', '22');
-    bg.setAttribute('fill', i===0 ? accent : cardBg); bg.setAttribute('stroke', fg);
+    bg.setAttribute('fill', d.major === (activeCircleKey || 'C') ? accent : cardBg); bg.setAttribute('stroke', fg);
     bg.setAttribute('stroke-width', '2'); bg.setAttribute('class', 'circle-key-bg');
     g.appendChild(bg);
     const txt = document.createElementNS(ns, 'text');
     txt.setAttribute('x', mx); txt.setAttribute('y', my+5); txt.setAttribute('font-size', '14');
     txt.setAttribute('font-weight', '700'); txt.setAttribute('text-anchor', 'middle');
-    txt.setAttribute('fill', i===0 ? hdr : fg);
+    txt.setAttribute('fill', d.major === (activeCircleKey || 'C') ? hdr : fg);
     txt.setAttribute('font-family', "'Space Mono', monospace"); txt.textContent = d.major;
     g.appendChild(txt);
     g.addEventListener('click', () => selectCircleKey(d.major, 'major'));
@@ -909,6 +911,8 @@ function selectCircleKey(keyName, mode) {
     if (idx >= 0) majorKey = CIRCLE_DISPLAY[idx].major;
     else majorKey = keyName.replace('m','');
   }
+  activeCircleKey = majorKey;
+  drawCircle();
   const idx = CIRCLE_DISPLAY.findIndex(d => d.major === majorKey);
   if (idx < 0) { infoDiv.innerHTML = '<p>Key not found</p>'; return; }
   const pos5 = CIRCLE_DISPLAY[(idx+1)%12], pos4 = CIRCLE_DISPLAY[(idx+11)%12];
