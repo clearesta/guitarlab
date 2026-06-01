@@ -468,6 +468,46 @@
       .neo-btn { font-size: 13px; padding: 10px 16px; }
       .fb-quiz-question { font-size: 18px; }
     }
+
+    /* ── Back to Top Button ──────────────────────────── */
+    .back-to-top {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      width: 44px;
+      height: 44px;
+      border: 3px solid var(--fg);
+      background: var(--accent);
+      color: var(--header-text);
+      font-size: 20px;
+      font-weight: 700;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 3px 3px 0 var(--fg);
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(10px);
+      transition: opacity 0.2s, visibility 0.2s, transform 0.2s;
+      z-index: 999;
+    }
+    .back-to-top.visible {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+    .back-to-top:hover {
+      transform: translate(1px, 1px);
+      box-shadow: 2px 2px 0 var(--fg);
+    }
+    .back-to-top:active {
+      transform: translate(3px, 3px);
+      box-shadow: none;
+    }
+    @media (max-width: 768px) {
+      .back-to-top { bottom: 16px; right: 16px; width: 38px; height: 38px; font-size: 17px; }
+    }
   </style>
 </head>
 <body>
@@ -681,6 +721,23 @@
         dots.appendChild(d);
       }
     });
+  </script>
+
+  <button class="back-to-top" id="back-to-top" aria-label="Back to top">↑</button>
+  <script>
+    (function() {
+      var btn = document.getElementById('back-to-top');
+      window.addEventListener('scroll', function() {
+        if (window.scrollY > 300) {
+          btn.classList.add('visible');
+        } else {
+          btn.classList.remove('visible');
+        }
+      });
+      btn.addEventListener('click', function() {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
+    })();
   </script>
 </body>
 </html>
