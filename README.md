@@ -2,26 +2,15 @@
 
 A free guitar learning website because apparently paying $10/month for an app that does the same thing is too much to ask.
 
-## What's in it
-
-**Chord Library** — 60+ chords with actual fingering diagrams. Click them, stare at them, pretend you know what you're doing. Has filters because scrolling through 60 chords is apparently too hard.
-
-**Chord Family** — Shows you every chord in a key. I ii iii IV V vi vii°. If you don't know what that means, that's what this tool is for.
-
-**Scale Explorer** — 21 scales drawn on a fretboard with pretty colors. Major, minor, pentatonic, blues, modes you've never heard of, the whole thing. Works with 30+ tunings because some of you insist on playing in Drop A on a 7-string.
-
-**Fretboard Trainer** — Toggle note names on the fretboard. Study them. Or don't. I'm not your guitar teacher.
-
-**Chord Progressions** — 12 popular progressions across genres. Rock, pop, jazz, blues, that one anime opening progression. Click play, hear the chords, feel something.
-
-**Metronome** — Goes from 30 to 300 BPM. Has tap tempo because apparently tapping a button is easier than typing a number. Adjustable time signatures for the prog rock people.
-
-**Live Tuner** — Uses your microphone to detect pitch in real time. Sharp, flat, in tune — it tells you. No excuses anymore.
-
-**Circle of Fifths** — The thing everyone pretends to understand. Now it's interactive so you can actually learn it instead of just nodding along.
-
 ## Features nobody asked for but got anyway
 
+- Chord Library — 60+ chords with actual fingering diagrams, filters, and chord family per key
+- Scale Explorer — 21 scales on a fretboard with pretty colors, works with 30+ tunings
+- Fretboard Trainer — toggle note names, study them, or don't
+- Chord Progressions — 12 popular progressions across genres with playable chord diagrams
+- Metronome — 30 to 300 BPM, tap tempo, adjustable time signatures
+- Live Tuner — real-time pitch detection from your microphone
+- Circle of Fifths — the thing everyone pretends to understand, now interactive
 - Dark mode for those late night practice sessions where you don't want to burn your retinas
 - 7 languages auto-detected from your browser because music is universal or whatever
 - 30+ tunings including DADGAD, baritone, and that one tuning your favorite djent guitarist uses
