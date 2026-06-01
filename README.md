@@ -1,4 +1,6 @@
-# GuitarLab - https://clearesta.github.io/guitarlab/
+# GuitarLab
+
+https://clearesta.github.io/guitarlab/
 
 A free guitar learning website because apparently paying $10/month for an app that does the same thing is too much to ask.
 
