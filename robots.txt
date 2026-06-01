@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://guitarlab.app/sitemap.xml
+
+# GuitarLab - Free Online Guitar Learning Platform
+# Chord Library | Scale Explorer | Fretboard Trainer | Metronome | Tuner | Quiz | Ear Training

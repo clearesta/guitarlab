@@ -1,0 +1,683 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="GuitarLab">
+  <meta name="format-detection" content="telephone=no">
+
+  <!-- ═══ SEO ══════════════════════════════════════════ -->
+  <title>GuitarLab - Free Online Guitar Learning | Chords, Scales, Fretboard, Metronome</title>
+  <meta name="description" content="GuitarLab: a free all-in-one guitar learning platform. Features chord library with 60+ chords, chord families, scale explorer with 21 scales, fretboard trainer, metronome, tuner, chord quiz, and ear training. Supports 30+ guitar tunings.">
+  <meta name="keywords" content="learn guitar online, guitar chords, guitar scales, fretboard trainer, online metronome, guitar tuner, chord family, chord progressions, ear training, acoustic guitar, music theory, free guitar tools">
+  <meta name="author" content="GuitarLab">
+  <meta name="robots" content="index, follow">
+  <meta name="theme-color" content="#c45c4a">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://guitarlab.app/">
+  <meta property="og:title" content="GuitarLab - Free Online Guitar Learning Platform">
+  <meta property="og:description" content="Learn guitar with our free all-in-one tool: chord library, scale explorer, fretboard trainer, metronome, tuner, chord quiz & ear training. No sign-up required.">
+  <meta property="og:image" content="https://guitarlab.app/og-image.png">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:site_name" content="GuitarLab">
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="GuitarLab - Free Online Guitar Learning">
+  <meta name="twitter:description" content="Chord library, scale explorer, fretboard trainer, metronome, tuner, quiz & ear training. 30+ tunings. Free forever.">
+
+  <!-- Canonical -->
+  <link rel="canonical" href="https://guitarlab.app/">
+
+  <!-- Favicon -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎸</text></svg>">
+
+  <!-- JSON-LD Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "GuitarLab",
+    "url": "https://guitarlab.app/",
+    "description": "Free all-in-one guitar learning platform with chord library, scale explorer, fretboard trainer, metronome, tuner, chord quiz, and ear training.",
+    "applicationCategory": "EducationalApplication",
+    "operatingSystem": "Web Browser",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+    "inLanguage": ["en", "id", "ja", "ko", "zh", "es", "pt"],
+    "isAccessibleForFree": true
+  }
+  </script>
+
+  <!-- Preconnect -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <style>
+    /* ═══════════════════════════════════════════════════
+       GUITARLAB - Neo Brutalism
+       ═══════════════════════════════════════════════════ */
+    @import url('https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Space+Grotesk:wght@400;600;700&display=swap');
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
+    a, button, input, select, textarea { touch-action: manipulation; }
+    body { overscroll-behavior-y: contain; font-family: 'Space Grotesk', sans-serif; background: var(--bg); color: var(--fg); min-height: 100vh; overflow-x: hidden; }
+
+    :root {
+      --bg: #e8e4dc; --fg: #2d2a26;
+      --accent: #c45c4a; --accent2: #4a7c9b; --accent3: #6b9e6b; --accent4: #c9a84c; --accent5: #8b7ab8;
+      --card: #f0ece4; --card-alt: #ebe7df;
+      --border: 3px solid #2d2a26;
+      --shadow: 5px 5px 0 #2d2a26; --shadow-sm: 3px 3px 0 #2d2a26;
+      --text-muted: #6a645a; --text-subtle: #8a8478;
+      --line-color: #7a746a; --fret-color: #9a948a; --fret-nut: #2d2a26; --dot-marker: #b8b2a6;
+      --header-text: #f0ece4; --header-bg: #3a3632; --tab-text: #a09a90; --input-bg: var(--bg);
+    }
+    body.dark {
+      --bg: #1a1918; --fg: #d4cfc5;
+      --accent: #d46a58; --accent2: #5a9abd; --accent3: #7cb87c; --accent4: #d9b85c; --accent5: #a090cc;
+      --card: #252320; --card-alt: #2a2825;
+      --border: 3px solid #444;
+      --shadow: 5px 5px 0 #111; --shadow-sm: 3px 3px 0 #111;
+      --text-muted: #9a9488; --text-subtle: #6a6458;
+      --line-color: #555; --fret-color: #555; --fret-nut: #d4cfc5; --dot-marker: #555;
+      --header-text: #f0ece4; --header-bg: #1a1918; --tab-text: #888; --input-bg: #2a2825;
+    }
+
+    /* ── Header ────────────────────────────────────── */
+    .header { background: var(--accent); border-bottom: var(--border); border-bottom-color: var(--fg); padding: 20px 30px; display: flex; flex-direction: column; gap: 10px; }
+    .header-top { display: flex; align-items: center; justify-content: space-between; gap: 15px; flex-wrap: wrap; }
+    .header h1 { font-family: 'Space Mono', monospace; font-size: 28px; color: var(--header-text); text-shadow: 2px 2px 0 rgba(0,0,0,0.3); letter-spacing: -1px; }
+    .header h1 span { color: var(--fg); }
+    .header-controls { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
+    .header-right { display: flex; align-items: center; gap: 8px; }
+    .home-btn { font-family: 'Space Mono', monospace; font-size: 12px; font-weight: 700; padding: 6px 14px; border: 2px solid var(--fg); background: rgba(255,255,255,0.15); color: var(--header-text); cursor: pointer; text-transform: uppercase; transition: all 0.1s; }
+    .home-btn:hover { background: rgba(255,255,255,0.3); }
+    .home-btn.hidden { display: none; }
+    .dark-toggle { font-size: 20px; width: 36px; height: 36px; border: 2px solid var(--fg); background: rgba(255,255,255,0.15); color: var(--header-text); cursor: pointer; display: flex; align-items: center; justify-content: center; transition: background 0.15s; line-height: 1; padding: 0; }
+    .dark-toggle:hover { background: rgba(255,255,255,0.3); }
+    .tuning-box { background: var(--card); border: var(--border); box-shadow: var(--shadow-sm); padding: 8px 12px; display: flex; align-items: center; gap: 8px; }
+    .tuning-box label { font-family: 'Space Mono', monospace; font-size: 12px; font-weight: 700; text-transform: uppercase; }
+    #tuning-select { font-family: 'Space Mono', monospace; font-size: 13px; padding: 4px 8px; border: 2px solid var(--fg); background: var(--input-bg); cursor: pointer; color: var(--fg); }
+    #tuning-notes { font-family: 'Space Mono', monospace; font-size: 11px; color: var(--header-text); text-shadow: 1px 1px 0 rgba(0,0,0,0.15); }
+
+    /* ── Landing Page ──────────────────────────────── */
+    .landing { padding: 0 25px 40px; animation: fadeIn 0.3s ease; }
+    .landing.hidden { display: none; }
+    .landing-inner { max-width: 1100px; margin: 0 auto; }
+    .hero { text-align: center; padding: 40px 20px 35px; }
+    .hero-title { font-family: 'Space Grotesk', sans-serif; font-size: 42px; font-weight: 700; line-height: 1.15; margin-bottom: 16px; color: var(--fg); }
+    .hero-title span { color: var(--accent); }
+    .hero-sub { font-size: 16px; color: var(--text-muted); max-width: 600px; margin: 0 auto 24px; line-height: 1.6; }
+    .features-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+    .feature-card { background: var(--card); border: var(--border); box-shadow: var(--shadow); padding: 22px 18px; cursor: pointer; transition: all 0.12s; text-align: center; }
+    .feature-card:hover { transform: translate(2px, 2px); box-shadow: 3px 3px 0 var(--fg); background: var(--card-alt); }
+    .feature-card:active { transform: translate(4px, 4px); box-shadow: 1px 1px 0 var(--fg); }
+    .feature-icon { font-size: 36px; margin-bottom: 10px; }
+    .feature-card h3 { font-family: 'Space Mono', monospace; font-size: 15px; font-weight: 700; margin-bottom: 6px; color: var(--fg); }
+    .feature-card p { font-size: 13px; color: var(--text-muted); line-height: 1.45; }
+
+    /* ── Tab Navigation ────────────────────────────── */
+    .tab-nav { display: flex; flex-wrap: wrap; background: var(--header-bg); border-bottom: var(--border); padding: 0 10px; }
+    .tab-btn { font-family: 'Space Mono', monospace; font-size: 12px; font-weight: 700; padding: 12px 16px; background: transparent; color: var(--tab-text); border: none; cursor: pointer; text-transform: uppercase; letter-spacing: 0.5px; transition: all 0.15s; border-bottom: 3px solid transparent; }
+    .tab-btn:hover { color: var(--header-text); background: rgba(255,255,255,0.05); }
+    .tab-btn.active { color: var(--header-text); background: var(--accent); border-bottom-color: var(--accent); }
+    .tab-content { display: none; padding: 25px; animation: fadeIn 0.2s ease; }
+    .tab-content.active { display: block; }
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(5px); } to { opacity: 1; transform: translateY(0); } }
+
+    /* ── Section Titles ────────────────────────────── */
+    .section-title { font-family: 'Space Mono', monospace; font-size: 22px; font-weight: 700; margin-bottom: 20px; padding-bottom: 8px; border-bottom: 4px solid var(--fg); display: inline-block; }
+    .section-desc { font-size: 14px; color: var(--text-muted); margin-bottom: 20px; }
+
+    /* ── Inputs & Controls ─────────────────────────── */
+    select, input[type="text"], input[type="range"] { font-family: 'Space Mono', monospace; color: var(--fg); }
+    .neo-input { font-family: 'Space Mono', monospace; font-size: 14px; padding: 8px 12px; border: var(--border); background: var(--card); color: var(--fg); box-shadow: var(--shadow-sm); outline: none; transition: box-shadow 0.1s; }
+    .neo-input:focus { box-shadow: 2px 2px 0 var(--fg); }
+    .neo-select { font-family: 'Space Mono', monospace; font-size: 14px; padding: 8px 12px; border: var(--border); background: var(--card); color: var(--fg); box-shadow: var(--shadow-sm); cursor: pointer; }
+    .neo-btn { font-family: 'Space Mono', monospace; font-size: 14px; font-weight: 700; padding: 10px 20px; border: var(--border); background: var(--accent4); color: var(--bg); cursor: pointer; box-shadow: var(--shadow-sm); text-transform: uppercase; transition: all 0.1s; }
+    .neo-btn:hover { transform: translate(1px, 1px); box-shadow: 2px 2px 0 var(--fg); }
+    .neo-btn:active { transform: translate(3px, 3px); box-shadow: none; }
+    .btn-small { font-family: 'Space Mono', monospace; font-size: 11px; font-weight: 700; padding: 6px 12px; border: 2px solid var(--fg); background: var(--accent3); color: var(--bg); cursor: pointer; box-shadow: 2px 2px 0 var(--fg); text-transform: uppercase; transition: all 0.1s; }
+    .btn-small:hover { transform: translate(1px, 1px); box-shadow: 1px 1px 0 var(--fg); }
+
+    /* ── Chord Library ─────────────────────────────── */
+    .chord-controls { display: flex; gap: 12px; margin-bottom: 20px; flex-wrap: wrap; align-items: center; }
+    .chord-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(120px, 1fr)); gap: 15px; }
+    .chord-card { background: var(--card); border: var(--border); box-shadow: var(--shadow); padding: 12px; text-align: center; cursor: pointer; transition: all 0.1s; }
+    .chord-card:hover { transform: translate(2px, 2px); box-shadow: 3px 3px 0 var(--fg); }
+    .chord-card:active { transform: translate(4px, 4px); box-shadow: 1px 1px 0 var(--fg); }
+    .chord-name { font-family: 'Space Mono', monospace; font-size: 18px; font-weight: 700; margin-bottom: 5px; }
+    .chord-full-name { font-size: 11px; color: var(--text-muted); margin-top: 4px; }
+    .chord-diagram { display: block; margin: 0 auto; }
+
+    /* ── Chord Family ──────────────────────────────── */
+    .family-controls { display: flex; gap: 15px; align-items: center; margin-bottom: 20px; flex-wrap: wrap; }
+    .family-section { margin-bottom: 30px; }
+    .family-title { font-family: 'Space Mono', monospace; font-size: 15px; font-weight: 700; margin-bottom: 12px; padding: 6px 12px; background: var(--header-bg); color: var(--header-text); display: inline-block; }
+    .family-chords { display: flex; gap: 12px; flex-wrap: wrap; }
+    .family-card { min-width: 90px; }
+    .chord-degree { font-family: 'Space Mono', monospace; font-size: 11px; color: var(--accent); font-weight: 700; }
+    .no-diagram { font-size: 11px; color: var(--text-subtle); padding: 20px 0; }
+
+    /* ── Scale Explorer ────────────────────────────── */
+    .scale-controls { display: flex; gap: 15px; align-items: center; margin-bottom: 20px; flex-wrap: wrap; }
+    .scale-notes { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 10px; }
+    .note-chip { font-family: 'Space Mono', monospace; font-size: 16px; font-weight: 700; padding: 8px 14px; background: var(--card); border: 3px solid var(--fg); box-shadow: 2px 2px 0 var(--fg); }
+    .scale-formula { font-family: 'Space Mono', monospace; font-size: 13px; color: var(--text-muted); margin-bottom: 20px; }
+
+    /* ── Fretboard ─────────────────────────────────── */
+    .fretboard-container { overflow-x: auto; padding: 15px 0; background: var(--card); border: var(--border); box-shadow: var(--shadow); -webkit-overflow-scrolling: touch; }
+    .fretboard-section { margin-bottom: 8px; padding: 0 10px; }
+    .fretboard-section:last-child { margin-bottom: 0; }
+    .fretboard-section svg { display: block; margin: 0 auto; }
+    .fretboard-full { overflow-x: auto; -webkit-overflow-scrolling: touch; background: var(--card-alt); border: 2px dashed var(--dot-marker); border-radius: 4px; padding: 10px 0; }
+    .fretboard-full-label { font-family: 'Space Mono', monospace; font-size: 14px; font-weight: 900; color: var(--fg); text-transform: uppercase; letter-spacing: 1px; margin: 20px 0 14px 10px; padding-top: 10px; border-top: 2px dashed var(--dot-marker); }
+    .fretboard-full-label:first-child { margin-top: 0; padding-top: 0; border-top: none; }
+    .fb-controls { display: flex; gap: 10px; margin-bottom: 15px; flex-wrap: wrap; }
+    .fb-quiz-area { background: var(--card); border: var(--border); box-shadow: var(--shadow); padding: 20px; margin-top: 15px; text-align: center; }
+    .fb-quiz-question { font-family: 'Space Mono', monospace; font-size: 22px; font-weight: 700; margin: 10px 0; }
+    .fb-quiz-answer { font-family: 'Space Mono', monospace; font-size: 18px; color: var(--accent3); font-weight: 700; margin: 10px 0; }
+
+    /* ── Progressions ──────────────────────────────── */
+    .prog-controls { display: flex; gap: 15px; align-items: center; margin-bottom: 20px; flex-wrap: wrap; }
+    .prog-list { display: grid; gap: 15px; }
+    .prog-card { background: var(--card); border: var(--border); box-shadow: var(--shadow); padding: 18px; }
+    .prog-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; flex-wrap: wrap; gap: 8px; }
+    .prog-name { font-family: 'Space Mono', monospace; font-size: 16px; font-weight: 700; }
+    .prog-genre { font-size: 12px; color: var(--text-subtle); background: var(--card-alt); padding: 3px 8px; border: 2px solid var(--text-subtle); }
+    .prog-chords { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 12px; }
+    .prog-chord-chip { font-family: 'Space Mono', monospace; font-size: 16px; font-weight: 700; padding: 6px 14px; background: var(--accent4); color: #1a1918; border: 2px solid var(--fg); box-shadow: 2px 2px 0 var(--fg); }
+    .prog-diagrams { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 10px; }
+    .prog-diagram-item { text-align: center; }
+    .prog-diagram-item span { font-family: 'Space Mono', monospace; font-size: 11px; font-weight: 700; }
+
+    /* ── Metronome ─────────────────────────────────── */
+    .metronome-box { max-width: 500px; margin: 0 auto; background: var(--card); border: var(--border); box-shadow: var(--shadow); padding: 30px; text-align: center; }
+    .metro-bpm-display { font-family: 'Space Mono', monospace; font-size: 72px; font-weight: 700; line-height: 1; margin: 10px 0; color: var(--accent); text-shadow: 3px 3px 0 rgba(0,0,0,0.3); }
+    .metro-bpm-label { font-family: 'Space Mono', monospace; font-size: 14px; color: var(--text-subtle); text-transform: uppercase; }
+    .metro-slider { width: 100%; margin: 20px 0; -webkit-appearance: none; height: 8px; background: var(--fg); outline: none; }
+    .metro-slider::-webkit-slider-thumb { -webkit-appearance: none; width: 24px; height: 24px; background: var(--accent); border: 3px solid var(--fg); cursor: pointer; }
+    .metro-controls { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; margin-top: 15px; }
+    .metro-beat-dots { display: flex; gap: 12px; justify-content: center; margin: 20px 0; }
+    .metro-dot { width: 28px; height: 28px; border-radius: 50%; background: var(--card-alt); border: 3px solid var(--fg); transition: all 0.08s; }
+    .metro-dot.active-beat { background: var(--accent); transform: scale(1.3); }
+    .active-metro { background: var(--accent) !important; color: var(--header-text) !important; }
+
+    /* ── Tuner ─────────────────────────────────────── */
+    .tuner-box { max-width: 500px; margin: 0 auto; background: var(--card); border: var(--border); box-shadow: var(--shadow); padding: 30px; text-align: center; }
+    .tuner-live-area { padding: 20px 0; }
+    .tuner-note-big { font-family: 'Space Mono', monospace; font-size: 72px; font-weight: 700; color: var(--accent2); min-height: 85px; line-height: 1; transition: color 0.15s; }
+    .tuner-note-big.sharp { color: var(--accent); }
+    .tuner-note-big.flat { color: var(--accent5); }
+    .tuner-note-big.intune { color: var(--accent3); }
+    .tuner-hz { font-family: 'Space Mono', monospace; font-size: 16px; color: var(--text-muted); margin-bottom: 20px; }
+    .tuner-meter-wrap { margin: 0 auto 20px; max-width: 320px; }
+    .tuner-meter-labels { display: flex; justify-content: space-between; font-family: 'Space Mono', monospace; font-size: 10px; color: var(--text-subtle); margin-bottom: 4px; }
+    .tuner-meter { position: relative; height: 24px; background: var(--card-alt); border: 2px solid var(--fg); border-radius: 12px; overflow: hidden; }
+    .tuner-meter-fill { position: absolute; top: 0; height: 100%; background: var(--accent3); transition: all 0.08s ease-out; }
+    .tuner-meter-fill.sharp { background: var(--accent); border-radius: 0 10px 10px 0; }
+    .tuner-meter-fill.flat { background: var(--accent5); border-radius: 10px 0 0 10px; }
+    .tuner-meter-fill.center { border-radius: 10px; }
+    .tuner-meter-center { position: absolute; top: 0; left: 50%; transform: translateX(-50%); width: 3px; height: 100%; background: var(--fg); z-index: 1; }
+    .tuner-cents { font-family: 'Space Mono', monospace; font-size: 14px; font-weight: 700; color: var(--fg); margin-top: 8px; }
+    .tuner-status { font-family: 'Space Mono', monospace; font-size: 18px; font-weight: 700; margin-top: 10px; min-height: 24px; }
+    .tuner-status.in-tune { color: var(--accent3); }
+    .tuner-status.sharp { color: var(--accent); }
+    .tuner-status.flat { color: var(--accent5); }
+    .tuner-strings { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; margin-top: 15px; padding-top: 15px; border-top: 2px dashed var(--dot-marker); }
+    .tuner-btn { width: 70px; height: 80px; border: var(--border); background: var(--card); color: var(--fg); box-shadow: var(--shadow-sm); cursor: pointer; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px; transition: all 0.1s; font-family: 'Space Mono', monospace; }
+    .tuner-btn:hover { transform: translate(2px, 2px); box-shadow: 1px 1px 0 var(--fg); background: var(--accent4); }
+    .tuner-btn:active { transform: translate(3px, 3px); box-shadow: none; }
+    .tuner-string-num { font-size: 11px; color: var(--text-subtle); font-weight: 700; }
+    .tuner-note { font-size: 20px; font-weight: 700; }
+
+    /* ── Quiz & Ear Training ───────────────────────── */
+    .quiz-box { max-width: 600px; margin: 0 auto; background: var(--card); border: var(--border); box-shadow: var(--shadow); padding: 30px; text-align: center; }
+    .quiz-display { margin: 20px 0; min-height: 170px; display: flex; align-items: center; justify-content: center; }
+    .quiz-options { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin: 20px 0; }
+    .quiz-option-btn { font-family: 'Space Mono', monospace; font-size: 16px; font-weight: 700; padding: 14px; border: var(--border); background: var(--card); box-shadow: var(--shadow-sm); cursor: pointer; transition: all 0.1s; }
+    .quiz-option-btn:hover { background: var(--card-alt); }
+    .quiz-option-btn.correct { background: var(--accent3) !important; color: var(--header-text); }
+    .quiz-option-btn.wrong { background: var(--accent) !important; color: var(--header-text); }
+    .quiz-score { font-family: 'Space Mono', monospace; font-size: 16px; font-weight: 700; margin: 15px 0; }
+    .ear-question { font-family: 'Space Mono', monospace; font-size: 18px; font-weight: 700; margin: 15px 0; }
+
+    /* ── Circle of Fifths ────────────────────────────── */
+    .circle-container { max-width: 440px; margin: 0 auto; padding: 10px 0; }
+
+    .circle-key {
+      cursor: pointer;
+      transition: all 0.15s;
+    }
+    .circle-key:hover { opacity: 0.85; }
+
+    .circle-key-bg {
+      transition: all 0.15s;
+    }
+    .circle-key.active .circle-key-bg {
+      stroke: var(--accent);
+      stroke-width: 3;
+    }
+
+    .circle-info {
+      margin-top: 20px;
+      animation: fadeIn 0.2s ease;
+    }
+
+    .circle-info-card {
+      background: var(--card);
+      border: var(--border);
+      box-shadow: var(--shadow);
+      padding: 20px;
+    }
+
+    .circle-info-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 14px;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .circle-info-title {
+      font-family: 'Space Mono', monospace;
+      font-size: 22px;
+      font-weight: 700;
+      color: var(--fg);
+    }
+
+    .circle-info-badges {
+      display: flex;
+      gap: 6px;
+      flex-wrap: wrap;
+    }
+
+    .circle-badge {
+      font-family: 'Space Mono', monospace;
+      font-size: 10px;
+      font-weight: 700;
+      padding: 4px 8px;
+      border: 2px solid var(--fg);
+      text-transform: uppercase;
+    }
+    .circle-badge-rel { background: var(--accent2); color: var(--header-text); }
+    .circle-badge-para { background: var(--accent5); color: var(--header-text); }
+
+    .circle-chords-section {
+      margin-bottom: 12px;
+    }
+
+    .circle-chords-label {
+      font-family: 'Space Mono', monospace;
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--accent2);
+      margin-bottom: 8px;
+      text-transform: uppercase;
+    }
+
+    .circle-chords-row {
+      display: flex;
+      gap: 6px;
+      flex-wrap: wrap;
+    }
+
+    .circle-chord-chip {
+      font-family: 'Space Mono', monospace;
+      font-size: 14px;
+      font-weight: 700;
+      padding: 5px 10px;
+      background: var(--accent4);
+      color: #1a1918;
+      border: 2px solid var(--fg);
+      box-shadow: 2px 2px 0 var(--fg);
+      cursor: pointer;
+      transition: all 0.1s;
+    }
+    .circle-chord-chip:hover { transform: translate(1px, 1px); box-shadow: 1px 1px 0 var(--fg); }
+    .circle-chord-chip.degree-1 { background: var(--accent); color: var(--header-text); }
+
+    .circle-scales-section {
+      margin-top: 10px;
+    }
+
+    .circle-scale-chip {
+      font-family: 'Space Mono', monospace;
+      font-size: 11px;
+      font-weight: 700;
+      padding: 3px 8px;
+      background: var(--card-alt);
+      color: var(--fg);
+      border: 2px solid var(--fg);
+      display: inline-block;
+      margin: 2px;
+    }
+
+    /* ── Smooth Page Transitions ─────────────────────── */
+    .tab-content {
+      display: none;
+      padding: 25px;
+      opacity: 0;
+      transform: translateY(8px);
+      transition: opacity 0.25s ease, transform 0.25s ease;
+    }
+    .tab-content.active {
+      display: block;
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .tab-content.animating-in {
+      display: block;
+    }
+
+    .landing {
+      padding: 0 25px 40px;
+      opacity: 1;
+      transform: translateY(0);
+      transition: opacity 0.25s ease, transform 0.25s ease;
+    }
+    .landing.hidden {
+      display: none;
+    }
+    .landing.animating-out {
+      opacity: 0;
+      transform: translateY(-8px);
+    }
+    .landing.animating-in {
+      display: block;
+      opacity: 0;
+      transform: translateY(8px);
+    }
+
+    /* ── Color Legend ───────────────────────────────── */
+    .legend { display: flex; gap: 10px; flex-wrap: wrap; margin: 15px 0; }
+    .legend-item { display: flex; align-items: center; gap: 5px; font-family: 'Space Mono', monospace; font-size: 11px; }
+    .legend-dot { width: 14px; height: 14px; border-radius: 50%; border: 2px solid var(--fg); }
+
+    /* ── Responsive ────────────────────────────────── */
+    @media (max-width: 900px) {
+      .features-grid { grid-template-columns: repeat(2, 1fr); }
+      .hero-title { font-size: 32px; }
+    }
+    @media (max-width: 768px) {
+      .header { padding: 12px 14px; flex-direction: column; align-items: stretch; gap: 10px; }
+      .header h1 { font-size: 20px; }
+      .header-controls { flex-direction: column; gap: 8px; align-items: stretch; }
+      .tuning-box { flex-wrap: wrap; gap: 6px; }
+      #tuning-select { font-size: 12px; flex: 1; min-width: 0; }
+      #tuning-notes { font-size: 10px; word-break: break-all; }
+      .home-btn { font-size: 10px; padding: 4px 10px; }
+      .dark-toggle { width: 30px; height: 30px; font-size: 16px; }
+      .tab-nav { padding: 0 4px; overflow-x: auto; flex-wrap: nowrap; -webkit-overflow-scrolling: touch; scrollbar-width: none; }
+      .tab-nav::-webkit-scrollbar { display: none; }
+      .tab-btn { font-size: 10px; padding: 10px 10px; white-space: nowrap; flex-shrink: 0; }
+      .tab-content { padding: 14px; }
+      .section-title { font-size: 18px; }
+      .chord-controls { flex-direction: column; gap: 8px; }
+      .neo-input, .neo-select { font-size: 13px; padding: 10px 12px; width: 100%; }
+      .chord-grid { grid-template-columns: repeat(auto-fill, minmax(95px, 1fr)); gap: 8px; }
+      .chord-card { padding: 8px 6px; }
+      .chord-name { font-size: 15px; }
+      .chord-diagram { width: 80px !important; height: 96px !important; }
+      .family-controls { flex-direction: column; gap: 8px; align-items: flex-start; }
+      .family-chords { gap: 8px; }
+      .family-card { min-width: 80px; }
+      .scale-controls { flex-direction: column; gap: 8px; align-items: flex-start; }
+      .note-chip { font-size: 13px; padding: 6px 10px; }
+      .prog-card { padding: 12px; }
+      .prog-name { font-size: 14px; }
+      .prog-chord-chip { font-size: 13px; padding: 4px 10px; }
+      .prog-diagram-item svg { width: 50px !important; height: 60px !important; }
+      .play-prog-btn { font-size: 10px; padding: 6px 12px; }
+      .metronome-box { padding: 20px 16px; }
+      .metro-bpm-display { font-size: 48px; }
+      .metro-controls { flex-direction: column; gap: 8px; align-items: stretch; }
+      .metro-controls .neo-btn { width: 100%; }
+      .metro-dot { width: 22px; height: 22px; }
+      .tuner-box { padding: 20px 16px; }
+      .tuner-display { font-size: 22px; }
+      .tuner-strings { gap: 6px; }
+      .tuner-btn { width: 52px; height: 62px; }
+      .tuner-note { font-size: 17px; }
+      .quiz-box { padding: 20px 16px; }
+      .quiz-options { grid-template-columns: 1fr; }
+      .quiz-option-btn { font-size: 14px; padding: 12px; }
+      .legend { gap: 6px; }
+      .legend-item { font-size: 10px; }
+      .legend-dot { width: 12px; height: 12px; }
+    }
+    @media (max-width: 520px) {
+      .features-grid { grid-template-columns: 1fr; }
+      .hero-title { font-size: 24px; }
+      .hero-sub { font-size: 14px; }
+      .feature-card { padding: 16px 14px; }
+      .feature-icon { font-size: 28px; margin-bottom: 6px; }
+      .feature-card h3 { font-size: 14px; }
+      .feature-card p { font-size: 12px; }
+      .tab-btn { font-size: 9px; padding: 8px 7px; }
+      .chord-grid { grid-template-columns: repeat(2, 1fr); }
+      .chord-diagram { width: 100% !important; height: auto !important; }
+      .metro-bpm-display { font-size: 40px; }
+      .neo-btn { font-size: 13px; padding: 10px 16px; }
+      .fb-quiz-question { font-size: 18px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ═══ HEADER ══════════════════════════════════════ -->
+  <header class="header" role="banner">
+    <div class="header-top">
+      <h1>🎸 Guitar<span>Lab</span></h1>
+      <div class="header-right">
+        <button class="dark-toggle" id="dark-toggle" aria-label="Toggle dark mode">🌙</button>
+        <button class="home-btn hidden" id="home-btn" aria-label="Back to Home">⌂ HOME</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ═══ LANDING PAGE ═══════════════════════════════ -->
+  <section id="landing" class="landing" role="region" aria-label="Welcome">
+    <div class="landing-inner">
+      <div class="hero">
+        <h2 class="hero-title">Learn Guitar<br><span>Smarter</span>, Play <span>Better</span></h2>
+        <p class="hero-sub">Free all-in-one guitar learning platform. Chords, scales, fretboard trainer, metronome, tuner, quiz & ear training — everything you need in one place.</p>
+      </div>
+      <div class="features-grid">
+        <div class="feature-card" data-navigate="tab-chords"><div class="feature-icon">🎵</div><h3>Chord Library</h3><p>60+ chords with fingering diagrams. Click for details.</p></div>
+        <div class="feature-card" data-navigate="tab-family"><div class="feature-icon">🎼</div><h3>Chord Family</h3><p>See all chords within any key. Major scale harmony at a glance.</p></div>
+        <div class="feature-card" data-navigate="tab-scales"><div class="feature-icon">🎨</div><h3>Scale Explorer</h3><p>21 scales visualized on the fretboard with interval colors.</p></div>
+        <div class="feature-card" data-navigate="tab-fretboard"><div class="feature-icon">🎸</div><h3>Fretboard Trainer</h3><p>Memorize notes on the fretboard. Toggle labels and quiz yourself.</p></div>
+        <div class="feature-card" data-navigate="tab-progressions"><div class="feature-icon">📊</div><h3>Chord Progressions</h3><p>Popular progressions in every genre.</p></div>
+        <div class="feature-card" data-navigate="tab-metronome"><div class="feature-icon">⏱️</div><h3>Metronome</h3><p>30–300 BPM with tap tempo. Keep your timing tight.</p></div>
+        <div class="feature-card" data-navigate="tab-tuner"><div class="feature-icon">🎯</div><h3>Guitar Tuner</h3><p>Live pitch detection with microphone. Tune your guitar in real-time.</p></div>
+        <div class="feature-card" data-navigate="tab-circle"><div class="feature-icon">⭕</div><h3>Circle of Fifths</h3><p>Interactive circle of fifths. See key relationships, chord families & scales.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ TAB NAV ═════════════════════════════════════ -->
+  <nav class="tab-nav" id="app-nav" role="navigation" aria-label="Feature navigation" style="display:none;">
+    <button class="tab-btn active" data-tab="tab-chords" role="tab" aria-selected="true">Chords</button>
+    <button class="tab-btn" data-tab="tab-family" role="tab">Family</button>
+    <button class="tab-btn" data-tab="tab-scales" role="tab">Scales</button>
+    <button class="tab-btn" data-tab="tab-fretboard" role="tab">Fretboard</button>
+    <button class="tab-btn" data-tab="tab-progressions" role="tab">Progressions</button>
+    <button class="tab-btn" data-tab="tab-metronome" role="tab">Metronome</button>
+    <button class="tab-btn" data-tab="tab-tuner" role="tab">Tuner</button>
+    <button class="tab-btn" data-tab="tab-circle" role="tab">Circle of 5ths</button>
+  </nav>
+
+  <!-- ═══ TAB: CHORDS ═══════════════════════════════ -->
+  <section id="tab-chords" class="tab-content" role="tabpanel">
+    <h2 class="section-title">Chord Library</h2>
+    <p class="section-desc">Browse 60+ chords with fingering diagrams. Use filters to search.</p>
+    <div class="chord-controls">
+      <input type="text" id="chord-filter" class="neo-input" placeholder="Search chords... (C, Am, G7)">
+      <select id="chord-type-filter" class="neo-select">
+        <option value="">All Types</option>
+        <option value="major">Major</option>
+        <option value="minor">Minor</option>
+        <option value="7">7th</option>
+        <option value="maj7">Major 7</option>
+        <option value="m7">Minor 7</option>
+        <option value="sus">Sus</option>
+        <option value="dim">Diminished</option>
+        <option value="aug">Augmented</option>
+        <option value="add9">Add9</option>
+        <option value="power">Power</option>
+      </select>
+    </div>
+    <div id="chord-grid" class="chord-grid"></div>
+  </section>
+
+  <!-- ═══ TAB: FAMILY ════════════════════════════════ -->
+  <section id="tab-family" class="tab-content" role="tabpanel">
+    <h2 class="section-title">Chord Family</h2>
+    <p class="section-desc">See all chords within a key.</p>
+    <div class="family-controls">
+      <label style="font-weight:700; font-family:'Space Mono',monospace;">KEY:</label>
+      <select id="family-key" class="neo-select"></select>
+    </div>
+    <div id="family-result"></div>
+  </section>
+
+  <!-- ═══ TAB: SCALES ═══════════════════════════════ -->
+  <section id="tab-scales" class="tab-content" role="tabpanel">
+    <h2 class="section-title">Scale Explorer</h2>
+    <p class="section-desc">Explore various scales on the fretboard. Colors show intervals from root.</p>
+    <div class="scale-controls">
+      <div class="tuning-box">
+        <label for="tuning-select">Tuning:</label>
+        <select id="tuning-select" class="neo-select" aria-label="Select guitar tuning"></select>
+      </div>
+      <label style="font-weight:700; font-family:'Space Mono',monospace;">Root:</label>
+      <select id="scale-key" class="neo-select"></select>
+      <label style="font-weight:700; font-family:'Space Mono',monospace;">Scale:</label>
+      <select id="scale-type" class="neo-select"></select>
+    </div>
+    <div id="scale-notes" class="scale-notes"></div>
+    <div id="scale-formula" class="scale-formula"></div>
+    <div class="legend">
+      <span class="legend-item"><span class="legend-dot" style="background:#c45c4a"></span> Root</span>
+      <span class="legend-item"><span class="legend-dot" style="background:#5a8a5a"></span> 3rd</span>
+      <span class="legend-item"><span class="legend-dot" style="background:#4a7c9b"></span> 4th</span>
+      <span class="legend-item"><span class="legend-dot" style="background:#c45c4a"></span> 5th</span>
+      <span class="legend-item"><span class="legend-dot" style="background:#c9a84c"></span> 6th</span>
+      <span class="legend-item"><span class="legend-dot" style="background:#5a6e9b"></span> 7th</span>
+    </div>
+    <div id="scale-fretboard" class="fretboard-container"></div>
+  </section>
+
+  <!-- ═══ TAB: FRETTBOARD ════════════════════════════ -->
+  <section id="tab-fretboard" class="tab-content" role="tabpanel">
+    <h2 class="section-title">Fretboard Trainer</h2>
+    <p class="section-desc">Practice memorizing notes. Toggle note names, then try the quiz!</p>
+    <div class="fb-controls">
+      <div class="tuning-box">
+        <label for="fb-tuning-select">Tuning:</label>
+        <select id="fb-tuning-select" class="neo-select" aria-label="Select guitar tuning for fretboard"></select>
+      </div>
+      <button id="fretboard-toggle-notes" class="neo-btn">Show/Hide Notes</button>
+    </div>
+    <div id="full-fretboard" class="fretboard-container"></div>
+  </section>
+
+  <!-- ═══ TAB: PROGRESSIONS ═════════════════════════ -->
+  <section id="tab-progressions" class="tab-content" role="tabpanel">
+    <h2 class="section-title">Chord Progressions</h2>
+    <p class="section-desc">Popular progressions with genre examples.</p>
+    <div class="prog-controls">
+      <label style="font-weight:700; font-family:'Space Mono',monospace;">KEY:</label>
+      <select id="prog-key" class="neo-select"></select>
+    </div>
+    <div id="prog-list" class="prog-list"></div>
+  </section>
+
+  <!-- ═══ TAB: METRONOME ════════════════════════════ -->
+  <section id="tab-metronome" class="tab-content" role="tabpanel">
+    <h2 class="section-title">Metronome</h2>
+    <div class="metronome-box">
+      <div class="metro-bpm-label">BPM</div>
+      <div id="metro-bpm-display" class="metro-bpm-display">120</div>
+      <input type="range" id="metro-bpm" class="metro-slider" min="30" max="300" value="120">
+      <div style="display:flex; justify-content:space-between; font-size:11px; color:var(--text-subtle); font-family:'Space Mono',monospace;">
+        <span>30</span><span>300</span>
+      </div>
+      <div class="metro-controls" style="margin:15px 0;">
+        <label style="font-weight:700; font-family:'Space Mono',monospace; font-size:13px;">Beats:</label>
+        <select id="metro-beats" class="neo-select" style="padding:4px 8px; font-size:13px;">
+          <option value="2">2</option><option value="3">3</option><option value="4" selected>4</option>
+          <option value="5">5</option><option value="6">6</option><option value="7">7</option><option value="8">8</option>
+        </select>
+      </div>
+      <div id="metro-dots" class="metro-beat-dots">
+        <div class="metro-dot"></div><div class="metro-dot"></div><div class="metro-dot"></div><div class="metro-dot"></div>
+      </div>
+      <div class="metro-controls">
+        <button id="metro-start" class="neo-btn">START</button>
+        <button id="metro-tap" class="neo-btn" style="background:var(--accent2); color:#f0ece4;">TAP TEMPO</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ TAB: TUNER ════════════════════════════════ -->
+  <section id="tab-tuner" class="tab-content" role="tabpanel">
+    <h2 class="section-title">Guitar Tuner</h2>
+    <p class="section-desc">Play a string on your guitar — the tuner detects the pitch in real-time using your microphone.</p>
+    <div class="tuner-box">
+      <div class="tuner-live-area">
+        <div class="tuner-note-big" id="tuner-note-big">--</div>
+        <div class="tuner-hz" id="tuner-hz">0.00 Hz</div>
+        <div class="tuner-meter-wrap">
+          <div class="tuner-meter-labels">
+            <span>-50</span><span>0</span><span>+50</span>
+          </div>
+          <div class="tuner-meter">
+            <div class="tuner-meter-fill" id="tuner-meter-fill"></div>
+            <div class="tuner-meter-center"></div>
+          </div>
+          <div class="tuner-cents" id="tuner-cents">0 cents</div>
+          <div class="tuner-status" id="tuner-status"></div>
+        </div>
+        <button class="neo-btn" id="tuner-start-btn">🎤 Start Tuner</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ TAB: CIRCLE OF FIFTHS ══════════════════════ -->
+  <section id="tab-circle" class="tab-content" role="tabpanel">
+    <h2 class="section-title">Circle of Fifths</h2>
+    <p class="section-desc">Explore key relationships, chord families and scales interactively. Click a key on the circle for details.</p>
+    <div class="circle-container">
+      <svg id="circle-svg" viewBox="0 0 420 420" width="420" height="420" style="max-width:100%; margin:auto; display:block;"></svg>
+    </div>
+    <div id="circle-info" class="circle-info" style="display:none;"></div>
+  </section>
+
+  <!-- ═══ Scripts ═════════════════════════════════════ -->
+  <script src="translations.js"></script>
+  <script src="data.js"></script>
+  <script src="app.js"></script>
+
+  <!-- Dynamic beat dots -->
+  <script>
+    document.getElementById('metro-beats').addEventListener('change', function() {
+      const dots = document.getElementById('metro-dots');
+      dots.innerHTML = '';
+      for (let i = 0; i < parseInt(this.value); i++) {
+        const d = document.createElement('div');
+        d.className = 'metro-dot';
+        dots.appendChild(d);
+      }
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  <url>
+    <loc>https://guitarlab.app/</loc>
+    <lastmod>2026-06-01</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://guitarlab.app/?lang=en"/>
+    <xhtml:link rel="alternate" hreflang="id" href="https://guitarlab.app/?lang=id"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://guitarlab.app/?lang=ja"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://guitarlab.app/?lang=ko"/>
+    <xhtml:link rel="alternate" hreflang="zh" href="https://guitarlab.app/?lang=zh"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://guitarlab.app/?lang=es"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://guitarlab.app/?lang=pt"/>
+  </url>
+</urlset>
